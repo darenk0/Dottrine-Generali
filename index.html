@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Wiki Dottrine Militari - Call To Leadership [RP]</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-image: linear-gradient(#393939, #686868);
+            font-family: 'Georgia', serif;
+            color: rgb(193, 193, 193);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        header {
+            height: 60px;
+            background-color: #333;
+            border-bottom: solid 6px #6c6c40;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            padding: 0 20px;
+            text-align: center;
+        }
+        
+        .quote {
+            color: rgb(193, 193, 193);
+            font-size: 1.1rem;
+            font-style: normal;
+        }
+        
+        /* Sidebar migliorata */
+        .sidebar-container {
+            position: fixed;
+            left: 0;
+            top: 60px;
+            width: 280px;
+            height: calc(100vh - 60px);
+            background: linear-gradient(180deg, #979797, #8c8c8c 100%);
+            overflow-y: auto;
+            z-index: 900;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .sidebar {
+            padding: 20px 0;
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            color: #6D5540;
+            font-weight: bold;
+            margin: 15px 20px 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #6c6c40;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .sidebar-section {
+            margin-bottom: 25px;
+        }
+        
+        .sidebar-link {
+            display: block;
+            color: #e41c1c;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 12px 20px;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+            font-size: 0.95rem;
+        }
+        
+        .sidebar-link:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #e41c1c;
+            padding-left: 24px;
+        }
+        
+        .sidebar-sub {
+            padding-left: 40px;
+            font-size: 0.9rem;
+            color: #6D5540;
+        }
+        
+        /* Scrollbar personalizzata */
+        .sidebar-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .sidebar-container::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        .sidebar-container::-webkit-scrollbar-thumb {
+            background: #6c6c40;
+            border-radius: 4px;
+        }
+        
+        .sidebar-container::-webkit-scrollbar-thumb:hover {
+            background: #7d7f51;
+        }
+        
+        /* Contenuto principale */
+        .main-content {
+            margin-left: 280px;
+            margin-top: 60px;
+            padding: 30px;
+            min-height: calc(100vh - 60px);
+        }
+        
+        .page-header {
+            background-color: #333;
+            color: #b6afaf;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            font-size: 1.4rem;
+            text-align: center;
+            border: solid 2px #6c6c40;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .doctrine-category {
+            margin-bottom: 50px;
+            background-color: rgba(51, 51, 51, 0.8);
+            border-radius: 8px;
+            padding: 25px;
+            border: solid 2px #6c6c40;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .category-header {
+            font-size: 2.2rem;
+            color: #6c6c40;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid #7d7f51;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+        
+        .category-header::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, #6c6c40, transparent);
+        }
+        
+        .bonus-box {
+            background-color: rgba(108, 108, 64, 0.2);
+            border-left: 5px solid #e41c1c;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+        
+        .bonus-title {
+            color: #e41c1c;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .bonus-title::before {
+            content: '⚔️';
+            margin-right: 10px;
+        }
+        
+        .bonus-text {
+            font-size: 1.1rem;
+            color: #b6afaf;
+        }
+        
+        .subdoctrine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .subdoctrine-card {
+            background-color: rgba(68, 68, 68, 0.7);
+            border: 1px solid #6c6c40;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .subdoctrine-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            border-color: #e41c1c;
+        }
+        
+        .subdoctrine-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #6c6c40, transparent);
+        }
+        
+        .subdoctrine-title {
+            color: #d4af37;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(108, 108, 64, 0.5);
+        }
+        
+        .subdoctrine-desc {
+            font-size: 1rem;
+            color: #b6afaf;
+            line-height: 1.7;
+        }
+        
+        .subdoctrine-level {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: rgba(108, 108, 64, 0.3);
+            border-radius: 5px;
+            font-size: 0.95rem;
+            color: #d4af37;
+            border-left: 3px solid #e41c1c;
+        }
+        
+        .doctrine-desc {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            color: #b6afaf;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            border-left: 5px solid #6c6c40;
+        }
+        
+        .doctrine-desc strong {
+            color: #d4af37;
+        }
+        
+        /* Summary Section */
+        .summary-section {
+            background-color: rgba(51, 51, 51, 0.9);
+            border: 2px solid #6c6c40;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 50px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .summary-title {
+            color: #e41c1c;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.7);
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .summary-card {
+            background-color: rgba(108, 108, 64, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(108, 108, 64, 0.5);
+        }
+        
+        .summary-card-title {
+            color: #d4af37;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .summary-card-list {
+            list-style-type: none;
+        }
+        
+        .summary-card-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .summary-card-list li::before {
+            content: '•';
+            color: #e41c1c;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            border-top: solid 6px #6c6c40;
+            color: #b6afaf;
+            padding: 20px;
+            margin-top: 50px;
+            margin-left: 280px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-style: italic;
+        }
+        
+        .footer-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .separator {
+            color: #6c6c40;
+        }
+        
+        footer a {
+            color: #e41c1c;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        footer a:hover {
+            color: #ff3333;
+            text-decoration: underline;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #6c6c40;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .back-to-top:hover {
+            background-color: #7d7f51;
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar-container {
+                width: 240px;
+            }
+            
+            .main-content {
+                margin-left: 240px;
+            }
+            
+            footer {
+                margin-left: 240px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar-container {
+                width: 100%;
+                height: auto;
+                position: relative;
+                top: 0;
+                max-height: 50vh;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                margin-top: 0;
+            }
+            
+            footer {
+                margin-left: 0;
+            }
+            
+            .subdoctrine-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 15px;
+            }
+            
+            .category-header {
+                font-size: 1.8rem;
+            }
+            
+            .sidebar-title {
+                font-size: 1.1rem;
+            }
+            
+            .sidebar-link {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Utility classes */
+        .highlight {
+            color: #e41c1c;
+            font-weight: bold;
+        }
+        
+        .note {
+            background-color: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid #d4af37;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header id="inizio">
+        <div class="header-content">
+            <span class="quote">"There is no way to victory; victory is the only way." - Winston Churchill</span>
+        </div>
+    </header>
+
+    <div class="sidebar-container">
+        <div class="sidebar">
+            <div class="sidebar-title">Dottrine Militari</div>
+            
+            <div class="sidebar-section">
+                <a href="#guerra-mobile" class="sidebar-link">Guerra Mobile</a>
+                <a href="#cavalleria-velocista" class="sidebar-link sidebar-sub">• Cavalleria Velocista</a>
+                <a href="#mezzi-corazzati" class="sidebar-link sidebar-sub">• Mezzi Corazzati</a>
+                <a href="#guerriglia-motorizzata" class="sidebar-link sidebar-sub">• Guerriglia Motorizzata</a>
+                <a href="#ricognizione-avanzata" class="sidebar-link sidebar-sub">• Ricognizione Avanzata</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <a href="#potenza-fuoco" class="sidebar-link">Potenza di Fuoco</a>
+                <a href="#batterie-difensive" class="sidebar-link sidebar-sub">• Batterie Difensive</a>
+                <a href="#fuoco-concentrato" class="sidebar-link sidebar-sub">• Fuoco Concentrato</a>
+                <a href="#mobilita-tattica" class="sidebar-link sidebar-sub">• Mobilità Tattica</a>
+                <a href="#tattiche-assedio" class="sidebar-link sidebar-sub">• Tattiche di Assedio</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <a href="#guerra-pianificata" class="sidebar-link">Guerra Pianificata</a>
+                <a href="#guerriglia-urbana" class="sidebar-link sidebar-sub">• Guerriglia Urbana</a>
+                <a href="#distruzione-convogli" class="sidebar-link sidebar-sub">• Distruzione Convogli</a>
+                <a href="#difesa-mobile" class="sidebar-link sidebar-sub">• Difesa Mobile</a>
+                <a href="#fanteria-leggera" class="sidebar-link sidebar-sub">• Fanteria Leggera</a>
+                <a href="#anti-mobilita" class="sidebar-link sidebar-sub">• Anti-Mobilità</a>
+                <a href="#fanteria-meccanizzata" class="sidebar-link sidebar-sub">• Fanteria Meccanizzata</a>
+                <a href="#contrattacchi-coordinati" class="sidebar-link sidebar-sub">• Contrattacchi Coordinati</a>
+                <a href="#adattabilita-ambientale" class="sidebar-link sidebar-sub">• Adattabilità Ambientale</a>
+                <a href="#assalto-anfibio" class="sidebar-link sidebar-sub">• Assalto Anfibio</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <a href="#guerra-combinata" class="sidebar-link">Guerra Combinata</a>
+                <a href="#coordinazione-navale-aerea" class="sidebar-link sidebar-sub">• Coordinazione Navale-Aerea</a>
+                <a href="#assalto-anfibio-combinato" class="sidebar-link sidebar-sub">• Assalto Anfibio</a>
+                <a href="#difesa-costiera-integrata" class="sidebar-link sidebar-sub">• Difesa Costiera Integrata</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <a href="#supremazia-aerea" class="sidebar-link">Supremazia Aerea</a>
+                <a href="#sorveglianza-aerea" class="sidebar-link sidebar-sub">• Sorveglianza Aerea</a>
+                <a href="#supporto-aereo-tattico" class="sidebar-link sidebar-sub">• Supporto Aereo Tattico</a>
+                <a href="#dominio-notturno" class="sidebar-link sidebar-sub">• Dominio Notturno</a>
+                <a href="#interdizione-aerea" class="sidebar-link sidebar-sub">• Interdizione Aerea</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <a href="#dominio-marittimo" class="sidebar-link">Dominio Marittimo</a>
+                <a href="#blocco-navale" class="sidebar-link sidebar-sub">• Blocco Navale</a>
+                <a href="#guerra-convogli-navale" class="sidebar-link sidebar-sub">• Guerra di Convogli</a>
+                <a href="#assalto-anfibio-navale" class="sidebar-link sidebar-sub">• Assalto Anfibio</a>
+                <a href="#guerra-sottomarina" class="sidebar-link sidebar-sub">• Guerra Sottomarina</a>
+                <a href="#difesa-costiera-potenziata" class="sidebar-link sidebar-sub">• Difesa Costiera</a>
+                <a href="#fuoco-navale-concentrato" class="sidebar-link sidebar-sub">• Fuoco Navale Concentrato</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <a href="#riepilogo" class="sidebar-link">Riepilogo Generale</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="page-header">
+            Wiki Dottrine Militari - Sistema Completo delle Dottrine
+        </div>
+        
+        <!-- GUERRA MOBILE -->
+        <div class="doctrine-category" id="guerra-mobile">
+            <h2 class="category-header">Guerra Mobile</h2>
+            
+            <div class="doctrine-desc">
+                Ottima dottrina per sfruttare al meglio cavalleria e mezzi motorizzati, tuttavia tenderà ad aumentare le risorse necessarie per mantenere queste unità (di conseguenza, sul campo di battaglia non possono andare lontanissime a causa di problemi logistici). Ottima dottrina per i giocatori che preferiscono una guerra lampo.
+            </div>
+            
+            <div class="bonus-box">
+                <div class="bonus-title">Bonus per Livello</div>
+                <div class="bonus-text">+1% velocità alle unità mobili e +1% attacco (cavalli, carri armati, ecc...)</div>
+            </div>
+            
+            <div class="subdoctrine-grid">
+                <div class="subdoctrine-card" id="cavalleria-velocista">
+                    <h3 class="subdoctrine-title">Cavalleria Velocista</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'uso aggressivo della cavalleria per attacchi fulminei e manovre di fianconata.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Avanguardia Montata:</strong> Addestramento e equipaggiamento specializzato per la cavalleria leggera, che favorisce la rapidità e la manovrabilità sul campo di battaglia. Ogni livello aumenta ulteriormente la velocità e la letalità delle unità di cavalleria leggera.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="mezzi-corazzati">
+                    <h3 class="subdoctrine-title">Mezzi Corazzati</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'uso efficace di mezzi corazzati per penetrare le linee nemiche e sostenere le avanzate delle truppe mobili.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Colonna d'Acciaio:</strong> Implementa tattiche di guerra corazzata, migliorando la mobilità e la potenza di fuoco delle unità di carri armati e mezzi corazzati. Ogni livello fornisce bonus aggiuntivi alla velocità e alla resistenza delle unità corazzate.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="guerriglia-motorizzata">
+                    <h3 class="subdoctrine-title">Guerriglia Motorizzata</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina enfatizza l'uso di unità motorizzate per condurre operazioni di guerriglia e colpire il nemico con rapide incursioni e ritirate.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Fuoco rapido:</strong> Addestramento e tattiche specializzate per le unità motorizzate, focalizzate sull'aggirare le difese nemiche e colpire con sorprendenti attacchi a grande velocità. Ogni livello migliora la capacità di sfondamento e di sopravvivenza delle unità motorizzate durante le azioni di guerriglia.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="ricognizione-avanzata">
+                    <h3 class="subdoctrine-title">Unità di Ricognizione Avanzate</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'uso di unità specializzate per raccogliere informazioni critiche sulle posizioni nemiche e facilitare l'azione rapida e coordinata delle forze mobili.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Esploratori specializzati:</strong> Addestramento e utilizzo efficiente di unità di ricognizione avanzate, che forniscono informazioni tempestive e accurate per guidare le operazioni tattiche e strategiche. Ogni livello fornisce bonus alla precisione delle informazioni raccolte.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- POTENZA DI FUOCO -->
+        <div class="doctrine-category" id="potenza-fuoco">
+            <h2 class="category-header">Potenza di Fuoco</h2>
+            
+            <div class="doctrine-desc">
+                Molto utile per sfruttare al massimo la propria artiglieria. Questa dottrina si concentra un po' di più sulla difesa che sull'attacco, ma in entrambe le occasioni è fantastica da usare per trivellare di colpi nemici e postazioni fortemente corazzate.
+            </div>
+            
+            <div class="bonus-box">
+                <div class="bonus-title">Bonus per Livello</div>
+                <div class="bonus-text">+1% difesa e +1% attacco alle unità d'artiglieria (arcieri, anticarri, ecc...)</div>
+            </div>
+            
+            <div class="subdoctrine-grid">
+                <div class="subdoctrine-card" id="batterie-difensive">
+                    <h3 class="subdoctrine-title">Batterie Difensive</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'ottimizzazione delle difese contro attacchi nemici, specialmente nelle situazioni in cui l'artiglieria gioca un ruolo fondamentale nella protezione delle posizioni.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Fortificazioni Potenziate:</strong> Addestramento e implementazione di fortificazioni avanzate progettate per resistere efficacemente agli attacchi avversari, fornendo una base solida per l'artiglieria difensiva. Ogni livello fornisce bonus alla resistenza delle fortificazioni e alla capacità di difesa delle unità stazionarie.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="fuoco-concentrato">
+                    <h3 class="subdoctrine-title">Fuoco Concentrato</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'ottimizzazione del fuoco d'artiglieria per massimizzare l'efficacia contro obiettivi specifici e concentrare il potere di fuoco in determinate aree del campo di battaglia.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Tattiche di Concentrazione:</strong> Addestramento delle unità d'artiglieria per coordinare il fuoco su obiettivi prioritari, aumentando l'efficacia distruttiva e riducendo al minimo gli sprechi di munizioni. Ogni livello fornisce bonus al danno inflitto su obiettivi specifici e alla precisione del tiro d'artiglieria.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="mobilita-tattica">
+                    <h3 class="subdoctrine-title">Mobilità Tattica</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'ottimizzazione della mobilità dell'artiglieria per consentire rapidi spostamenti sul campo di battaglia, garantendo flessibilità e capacità di risposta alle mutevoli condizioni di combattimento.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Unità di Artiglieria Leggera:</strong> Addestramento e utilizzo di unità d'artiglieria altamente mobili, capaci di muoversi rapidamente per supportare le operazioni offensive e difensive in vari contesti operativi. Ogni livello fornisce bonus alla velocità di movimento e alla capacità di cambiare posizione rapidamente.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="tattiche-assedio">
+                    <h3 class="subdoctrine-title">Tattiche di Assedio</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'utilizzo dell'artiglieria per condurre operazioni di assedio contro fortezze nemiche, massimizzando l'efficacia dei bombardamenti e garantendo il successo delle operazioni di assalto.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Artiglieria d'Assedio:</strong> Addestramento e impiego di artiglieria specificamente progettata per l'assedio per abbattere le mura e le difese nemiche. Ogni livello fornisce bonus alla potenza d'attacco e alla precisione delle armi d'assedio.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- GUERRA PIANIFICATA -->
+        <div class="doctrine-category" id="guerra-pianificata">
+            <h2 class="category-header">Guerra Pianificata</h2>
+            
+            <div class="doctrine-desc">
+                La miglior dottrina per la fanteria e diminuire i rifornimenti necessari da inviare al fronte. La fanteria è ottima per assaltare le postazioni d'artiglieria più vulnerabili e distruggere i convogli più grandi. Tuttavia, è bene stare attenti all'artiglieria ma soprattutto ai mezzi mobili, in quanto potrebbero circondare e annientare rapidamente la fanteria.
+            </div>
+            
+            <div class="bonus-box">
+                <div class="bonus-title">Bonus per Livello</div>
+                <div class="bonus-text">-1% rifornimenti necessari al fronte per tutte le unità, +0.5% difesa e +0.5% attacco fanteria</div>
+            </div>
+            
+            <div class="subdoctrine-grid">
+                <div class="subdoctrine-card" id="guerriglia-urbana">
+                    <h3 class="subdoctrine-title">Tattiche di Guerriglia Urbana</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'addestramento della fanteria per operare efficacemente in ambienti urbani, riducendo la dipendenza dai rifornimenti esterni e aumentando la capacità di mantenere il controllo del territorio senza estese linee di approvvigionamento.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Combattimento in Ambiente Urbano:</strong> Addestramento specializzato per la fanteria nell'affrontare le sfide specifiche delle operazioni urbane, includendo tecniche di combattimento ravvicinato, coordinazione di squadra e gestione delle risorse locali. Ogni livello fornisce bonus alla capacità della fanteria di condurre operazioni autonome e ridurre la necessità di rifornimenti esterni.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="distruzione-convogli">
+                    <h3 class="subdoctrine-title">Ricerca e Distruzione di Convogli</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'impiego della fanteria per individuare, intercettare e distruggere i convogli nemici, interrompendo le linee di approvvigionamento nemiche e riducendo la loro capacità di mantenere le operazioni sul fronte.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Operazioni di Guerriglia Mobile:</strong> Addestramento della fanteria per condurre operazioni di guerriglia mobile, utilizzando tattiche di attacco rapido e ritirata per colpire i convogli nemici con precisione e minimo rischio per le proprie forze. Ogni livello fornisce bonus alla capacità della fanteria di individuare e distruggere i convogli nemici e alla mobilità sul campo di battaglia.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="difesa-mobile">
+                    <h3 class="subdoctrine-title">Difesa Mobile</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'addestramento della fanteria per condurre operazioni di difesa mobile, contrastando efficacemente gli attacchi nemici e mantenendo una capacità offensiva significativa per respingere le minacce mobili.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Controffensive Rapide:</strong> Addestramento della fanteria per eseguire controffensive rapide e coordinate contro attacchi mobili nemici, utilizzando tattiche di aggiramento e sorpresa per neutralizzare le minacce e riprendere l'iniziativa sul campo di battaglia. Ogni livello fornisce bonus alla capacità della fanteria di mantenere una difesa efficace e di condurre controffensive con successo.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="fanteria-leggera">
+                    <h3 class="subdoctrine-title">Fanteria Leggera</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'addestramento di unità di fanteria altamente mobili e flessibili, capaci di muoversi rapidamente sul campo di battaglia e di adattarsi alle mutevoli condizioni del terreno.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Assalto lampo:</strong> Addestramento specializzato per la fanteria leggera, che priorita la mobilità e l'agilità per garantire la rapidità delle azioni e la capacità di raggiungere posizioni strategiche cruciali. Ogni livello fornisce bonus alla velocità di movimento e alla velocità di schieramento.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="anti-mobilita">
+                    <h3 class="subdoctrine-title">Difesa Anti-Mobilità</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sulla preparazione della fanteria per contrastare le minacce mobili nemiche, come i mezzi corazzati e i veicoli da combattimento, riducendo così il rischio di essere circondati e annientati sul campo di battaglia.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Contromisure Anti-Mobilità:</strong> Addestramento della fanteria nell'uso di tattiche e armamenti specifici per contrastare le minacce mobili, come mine anti-carro, lanciagranate e munizioni specializzate, al fine di neutralizzare veicoli nemici e garantire la sopravvivenza delle proprie forze. Ogni livello fornisce bonus alla capacità della fanteria di contrastare le minacce mobili e alla protezione delle proprie posizioni.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="fanteria-meccanizzata">
+                    <h3 class="subdoctrine-title">Sfruttamento della Fanteria Mobile</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'utilizzo della fanteria in ruoli mobili e flessibili, permettendo loro di adattarsi rapidamente alle esigenze del campo di battaglia e di svolgere una varietà di compiti senza richiedere pesanti supporti logistici.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Unità di Fanteria Meccanizzata:</strong> Integrazione di mezzi di trasporto leggeri e veicoli corazzati nelle unità di fanteria, permettendo loro di spostarsi rapidamente sul campo di battaglia e di svolgere una gamma diversificata di missioni, come ricognizione, attacco e difesa. Ogni livello fornisce bonus alla mobilità e alla versatilità delle unità di fanteria meccanizzata.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="contrattacchi-coordinati">
+                    <h3 class="subdoctrine-title">Contrattacchi Coordinati</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'utilizzo della fanteria per condurre contrattacchi rapidi e coordinati contro le forze nemiche, sfruttando le opportunità tattiche per invertire il corso delle battaglie e ridurre la pressione sulle proprie linee.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Tattiche di Contrattacco:</strong> Addestramento della fanteria nell'identificare e sfruttare le vulnerabilità nemiche per lanciare contrattacchi tempestivi e decisivi, utilizzando tattiche di sorpresa, movimento aggressivo e coordinazione efficace tra le unità. Ogni livello fornisce bonus alla capacità della fanteria di condurre contrattacchi efficaci e alla precisione delle operazioni tattiche.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="adattabilita-ambientale">
+                    <h3 class="subdoctrine-title">Adattabilità Ambientale</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'addestramento della fanteria per operare efficacemente in una vasta gamma di ambienti e condizioni, riducendo la dipendenza dai rifornimenti esterni e aumentando la capacità di sopravvivenza e successo sul campo di battaglia.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Addestramento alla Sopravvivenza:</strong> Formazione della fanteria per adattarsi e sopravvivere in vari ambienti, inclusi deserti, foreste, montagne e terreni urbani, attraverso tecniche di sopravvivenza, navigazione, caccia e raccolta di risorse locali. Ogni livello fornisce bonus alla capacità della fanteria di adattarsi agli ambienti e di mantenere l'efficacia operativa senza supporti esterni.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="assalto-anfibio">
+                    <h3 class="subdoctrine-title">Assalto Anfibio Efficace</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si focalizza sull'impiego efficiente delle forze anfibie per garantire il successo degli sbarchi e la conquista delle posizioni costiere nemiche.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Addestramento Specializzato delle Forze Anfibie:</strong> Implementazione di programmi di addestramento avanzati per le truppe destinate agli assalti anfibi, concentrandosi sulle tecniche di sbarco, sul combattimento in ambiente costiero e sulla cooperazione con le forze navali di supporto. Ogni livello fornisce bonus alla preparazione e all'efficacia delle truppe anfibie.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- GUERRA COMBINATA -->
+        <div class="doctrine-category" id="guerra-combinata">
+            <h2 class="category-header">Guerra Combinata</h2>
+            
+            <div class="doctrine-desc">
+                Migliore dottrina per combinare truppe di terra, mare e aria. Tramite questa dottrina, l'esercito può sfruttare al meglio i bombardamenti dal mare e dall'aria al meglio.
+            </div>
+            
+            <div class="bonus-box">
+                <div class="bonus-title">Bonus per Livello</div>
+                <div class="bonus-text">+1% bonus bombardamenti via mare, +1% bonus bombardamenti via aria e -0.5% rifornimenti necessari al fronte per tutte le unità</div>
+            </div>
+            
+            <div class="subdoctrine-grid">
+                <div class="subdoctrine-card" id="coordinazione-navale-aerea">
+                    <h3 class="subdoctrine-title">Coordinazione Navale-Aerea</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sulla sinergia tra le forze navali e aeree, ottimizzando l'uso combinato di bombardamenti navali e aerei per massimizzare l'impatto sul nemico e garantire il controllo del dominio marittimo e aereo.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Supporto Aereo Navale:</strong> Coordinazione delle forze aeree per fornire supporto tattico alle operazioni navali, includendo bombardamenti strategici contro obiettivi navali e costieri critici, protezione aerea per le flotte e ricognizione aerea per individuare e neutralizzare minacce nemiche. Ogni livello fornisce bonus alla precisione e all'efficacia dei bombardamenti navali supportati dall'aviazione.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="assalto-anfibio-combinato">
+                    <h3 class="subdoctrine-title">Assalto Anfibio</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'impiego di forze anfibie per condurre operazioni di sbarco e assalto contro obiettivi costieri, sfruttando la combinazione di potenza di fuoco da mare, aria e terra per ottenere la superiorità tattica e logistica.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Coordinazione Assalto Anfibio:</strong> Integrazione delle forze navali, aeree e terrestri per pianificare e eseguire operazioni di sbarco anfibio, includendo supporto aereo per la copertura e la soppressione del fuoco nemico, bombardamenti navali per neutralizzare le difese costiere e l'impiego di truppe terrestri per garantire e consolidare il successo dell'assalto. Ogni livello fornisce bonus alla coordinazione e alla sincronizzazione delle forze durante gli assalti anfibi.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="difesa-costiera-integrata">
+                    <h3 class="subdoctrine-title">Difesa Costiera Integrata</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sulla creazione di una difesa costiera integrata, utilizzando una combinazione di mezzi navali, aerei e terrestri per proteggere le proprie coste e contrastare le minacce nemiche provenienti dal mare e dall'aria.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Sistema di Difesa Costiera Integrato:</strong> Coordinazione delle risorse navali, aeree e terrestri per implementare un sistema di difesa costiera integrato, includendo pattugliamento marittimo per la sorveglianza delle acque territoriali, intercettazioni aeree per la difesa contro minacce aeree e batterie costiere per la protezione contro sbarchi nemici. Ogni livello fornisce bonus alla capacità difensiva e alla resistenza delle difese costiere.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SUPREMAZIA AEREA -->
+        <div class="doctrine-category" id="supremazia-aerea">
+            <h2 class="category-header">Supremazia Aerea</h2>
+            
+            <div class="doctrine-desc">
+                Questa dottrina si concentra sull'ottenere la superiorità aerea e sfrutta al massimo le capacità dei propri aerei da combattimento. È particolarmente adatta per coloro che vogliono dominare i cieli e ottenere un vantaggio strategico nelle operazioni militari.
+            </div>
+            
+            <div class="bonus-box">
+                <div class="bonus-title">Bonus per Livello</div>
+                <div class="bonus-text">+1% attacco e +1% velocità alle unità aeree da combattimento (caccia, bombardieri, ecc...)</div>
+            </div>
+            
+            <div class="subdoctrine-grid">
+                <div class="subdoctrine-card" id="sorveglianza-aerea">
+                    <h3 class="subdoctrine-title">Sorveglianza Aerea Avanzata</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'impiego di mezzi aerei per la sorveglianza e la ricognizione avanzate, permettendo di individuare e monitorare le attività nemiche nello spazio aereo e di fornire informazioni cruciali per le operazioni militari.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Raccolta di Informazioni Tattiche:</strong> Utilizzo di aerei da sorveglianza avanzati e droni per raccogliere informazioni dettagliate sulle attività nemiche, compresi movimenti delle truppe, installazioni difensive e posizioni di difesa aerea, permettendo di pianificare e condurre operazioni aeree con maggiore precisione e consapevolezza situazionale. Ogni livello fornisce bonus alla precisione e alla copertura della sorveglianza aerea.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="supporto-aereo-tattico">
+                    <h3 class="subdoctrine-title">Supporto Aereo Tattico</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'uso tattico degli aerei da combattimento per fornire supporto diretto alle truppe terrestri, fornendo fuoco di copertura, ricognizione armata e attacco a bersagli terrestri per favorire le operazioni sul campo di battaglia.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Coordinazione con le Forze Terrestri:</strong> Coordinazione stretta e supporto diretto alle truppe terrestri attraverso l'uso di aerei da combattimento per fornire fuoco di copertura, attacco a bersagli nemici e supporto alle operazioni di evacuazione e rifornimento. Ogni livello fornisce bonus alla precisione e alla tempestività del supporto aereo tattico.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="dominio-notturno">
+                    <h3 class="subdoctrine-title">Dominio dell'Aria Notturna</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'impiego di aerei da combattimento specializzati e sullo sviluppo di tattiche adatte per ottenere la supremazia aerea anche durante le ore notturne, garantendo un vantaggio strategico fondamentale nelle operazioni notturne tipiche della Seconda Guerra Mondiale.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Operazioni Notturne:</strong> Addestramento intensivo dei piloti per le operazioni aeree notturne, impiegando aerei da caccia dotati di tecnologie avanzate per il combattimento notturno, come i radar e i proiettori di ricerca, per individuare e impegnare i bersagli nemici anche in condizioni di scarsa visibilità. Ogni livello fornisce bonus alla capacità operativa e alla letalità delle operazioni aeree notturne, consentendo di mantenere una presenza aerea efficace anche durante le ore buie della notte.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="interdizione-aerea">
+                    <h3 class="subdoctrine-title">Interdizione Aerea Profonda</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'uso di aerei da combattimento per interdire e neutralizzare le capacità nemiche in profondità nel territorio avversario, colpendo infrastrutture critiche, risorse strategiche e comunicazioni vitali.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Attacchi su Obiettivi Chiave:</strong> Identificazione e attacco mirato di obiettivi strategici nemiche, come basi militari, infrastrutture di trasporto, impianti industriali e centri di comando, utilizzando aerei da combattimento per interrompere e neutralizzare le capacità nemiche essenziali per la conduzione delle operazioni militari. Ogni livello fornisce bonus alla precisione e all'efficacia degli attacchi contro obiettivi di interdizione aerea profonda.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- DOMINIO MARITTIMO -->
+        <div class="doctrine-category" id="dominio-marittimo">
+            <h2 class="category-header">Dominio Marittimo</h2>
+            
+            <div class="doctrine-desc">
+                Questa dottrina si concentra sull'uso strategico della marina per ottenere il controllo dei mari e delle vie d'acqua. Favorisce lo sviluppo di una flotta potente e l'utilizzo di tattiche navali avanzate per garantire la protezione delle coste e il dominio delle rotte commerciali.
+            </div>
+            
+            <div class="bonus-box">
+                <div class="bonus-title">Bonus per Livello</div>
+                <div class="bonus-text">+1% attacco e +1% difesa alle unità navali (naviglio da guerra, sottomarini, ecc...)</div>
+            </div>
+            
+            <div class="subdoctrine-grid">
+                <div class="subdoctrine-card" id="blocco-navale">
+                    <h3 class="subdoctrine-title">Blocco Navale</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'implementazione di blocchi navali per interrompere le rotte commerciali nemiche e privare il nemico di risorse vitali, favorendo il controllo dei mari e delle vie d'acqua cruciali per il commercio e la logistica.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Interdizione Navale:</strong> Utilizzo di navi da guerra per stabilire blocchi navali efficaci lungo le rotte commerciali nemiche, impedendo il passaggio delle merci e dei rifornimenti strategici e mettendo sotto pressione l'economia e la logistica del nemico. Ogni livello fornisce bonus alla capacità di interdizione navale e alla protezione delle rotte commerciali.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="guerra-convogli-navale">
+                    <h3 class="subdoctrine-title">Guerra di Convogli</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'impiego di navi da guerra per scortare e proteggere i convogli di rifornimenti vitali, garantendo la sicurezza delle rotte marittime e la continuità delle operazioni logistiche.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Scorta di Convogli:</strong> Assegnazione di navi da guerra per scortare e proteggere i convogli di rifornimenti militari e commerciali e militari, utilizzando tattiche di difesa e di contrasto per dissuadere e respingere gli attacchi delle forze nemiche e garantire un transito sicuro e affidabile delle merci. Ogni livello fornisce bonus alla capacità di scorta di convogli e alla protezione delle rotte marittime.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="assalto-anfibio-navale">
+                    <h3 class="subdoctrine-title">Assalto Anfibio</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'uso di forze navali per condurre operazioni di sbarco e assalto contro obiettivi costieri, garantendo la proiezione di potenza e la capacità di stabilire una presenza militare strategica in territorio nemico.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Operazioni di Sbarco:</strong> Pianificazione e esecuzione di operazioni di sbarco anfibio per conquistare e stabilire una presenza militare in territorio nemico, utilizzando una combinazione di navi da guerra, mezzi da sbarco e truppe di fanteria per conquistare e consolidare le posizioni costiere chiave. Ogni livello fornisce bonus alla capacità di pianificazione e di esecuzione di operazioni di sbarco anfibio e alla protezione delle truppe durante gli assalti costieri.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="guerra-sottomarina">
+                    <h3 class="subdoctrine-title">Guerra Sottomarina</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'utilizzo strategico dei sottomarini per minacciare le forze nemiche e interrompere le rotte di rifornimento navale, garantendo il controllo dei mari e delle vie d'acqua chiave.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Operazioni Subacquee:</strong> Impiego di sottomarini per condurre operazioni subacquee offensive e difensive, inclusi attacchi ai convogli nemici, sorveglianza delle rotte navali e protezione delle flotte amiche. Ogni livello fornisce bonus alla capacità operativa dei sottomarini e alla riuscita delle operazioni subacquee.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="difesa-costiera-potenziata">
+                    <h3 class="subdoctrine-title">Difesa Costiera Potenziata</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sulla protezione delle coste nazionali da eventuali minacce nemiche attraverso la creazione di una difesa costiera efficace e integrata.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Difesa delle Acque Costiere:</strong> Potenziamento delle difese costiere attraverso l'installazione di batterie costiere, la costruzione di basi navali e la presenza di unità navali di scorta per proteggere le coste nazionali da eventuali attacchi nemici provenienti dal mare. Ogni livello fornisce bonus alla capacità difensiva delle acque costiere e alla protezione delle coste nazionali.
+                    </div>
+                </div>
+                
+                <div class="subdoctrine-card" id="fuoco-navale-concentrato">
+                    <h3 class="subdoctrine-title">Fuoco Navale Concentrato</h3>
+                    <div class="subdoctrine-desc">
+                        Questa sotto-dottrina si concentra sull'impiego strategico dell'artiglieria navale per fornire supporto di fuoco efficace durante le operazioni marittime, garantendo il dominio dei mari attraverso una potente capacità di fuoco.
+                    </div>
+                    <div class="subdoctrine-level">
+                        <strong>Battaglia Navale da Lunga Distanza:</strong> Utilizzo di navi da guerra dotate di potenti sistemi di artiglieria navale per condurre attacchi a lungo raggio contro bersagli navali e costieri nemici, garantendo la superiorità nel teatro marittimo attraverso il controllo delle distanze di combattimento. Ogni livello fornisce bonus alla precisione e alla potenza di fuoco delle navi da guerra durante le operazioni di combattimento navale.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- RIEPILOGO -->
+        <div class="summary-section" id="riepilogo">
+            <h2 class="summary-title">Riepilogo Generale delle Dottrine</h2>
+            
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3 class="summary-card-title">Dottrine Principali (6)</h3>
+                    <ul class="summary-card-list">
+                        <li>Guerra Mobile</li>
+                        <li>Potenza di Fuoco</li>
+                        <li>Guerra Pianificata</li>
+                        <li>Guerra Combinata</li>
+                        <li>Supremazia Aerea</li>
+                        <li>Dominio Marittimo</li>
+                    </ul>
+                </div>
+                
+                <div class="summary-card">
+                    <h3 class="summary-card-title">Sotto-dottrine Specifiche (31)</h3>
+                    <ul class="summary-card-list">
+                        <li>Cavalleria Velocista</li>
+                        <li>Mezzi Corazzati</li>
+                        <li>Guerriglia Motorizzata</li>
+                        <li>Ricognizione Avanzata</li>
+                        <li>Batterie Difensive</li>
+                        <li>Fuoco Concentrato</li>
+                        <li>Mobilità Tattica</li>
+                        <li>Tattiche di Assedio</li>
+                        <li>Guerriglia Urbana</li>
+                        <li>Distruzione Convogli</li>
+                        <li>...e molte altre</li>
+                    </ul>
+                </div>
+                
+                
+                <div class="summary-card">
+                    <h3 class="summary-card-title">Totale Dottrine</h3>
+                    <ul class="summary-card-list">
+                        <li>6 Dottrine Principali</li>
+                        <li>31 Sotto-dottrine</li>
+                        
+                        <li><strong>37 Dottrine Totali</strong></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="note">
+                <strong>Nota:</strong> Ogni dottrina offre bonus specifici per livello. Scegliete la dottrina che meglio si adatta al vostro stile di gioco e alla vostra strategia militare!
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-item">
+            <p><i>by D.F.</i></p>
+        </div>
+        <span class="separator">|</span>
+        <div class="footer-item">
+            <p><i>Questa pagina è stata creata il 17/12/2025.</i></p>
+        </div>
+        <span class="separator">|</span>
+        <div class="footer-item">
+            <a href="https://www.gnu.org/licenses/gpl-3.0.html"><i>Licenza</i></a>
+        </div>
+        <span class="separator">|</span>
+        <div class="footer-item">
+            <a href="#inizio">Torna all'inizio</a>
+        </div>
+    </footer>
+
+    <a href="#inizio" class="back-to-top">↑</a>
+
+    <script>
+        // Smooth scrolling per tutti i link interni
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Mostra/nascondi il pulsante "Torna su"
+        window.addEventListener('scroll', function() {
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'flex';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+        
+        // Evidenzia il link attivo nella sidebar
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.doctrine-category, .summary-section');
+            const sidebarLinks = document.querySelectorAll('.sidebar-link');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.scrollY >= (sectionTop - 100)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Aggiunge classe active ai link sidebar
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
